@@ -9,7 +9,7 @@ This plugin is created based on what I felt was lacking from Godot in regards to
 
 Godot Toaster integrates a brand new Toaster tab into the bottom dock. At any time, you can open it up to begin cooking Toast. Several cooking options are presented for your cooking leisure, along with an advanced integrated terminal dedicated for revealing what's going on inside the toaster.
 
-![video](https://github.com/dog-on-moon/godot-intervals/blob/main/readme/video.mp4)
+https://github.com/user-attachments/assets/d67e945d-972c-4f50-9906-d9e8ef34b980
 
 ## Documentation
 
