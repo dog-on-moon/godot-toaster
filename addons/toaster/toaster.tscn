@@ -1,0 +1,198 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjm8md313j7cj"]
+
+[ext_resource type="Script" uid="uid://d0xlsbfyvhjx8" path="res://addons/toaster/toaster.gd" id="1_865fn"]
+[ext_resource type="Texture2D" uid="uid://dfo6t3osarneu" path="res://addons/toaster/toaster.png" id="2_6igkx"]
+[ext_resource type="Script" uid="uid://b8cda8xgjumv0" path="res://addons/toaster/toaster_terminal.gd" id="3_dj510"]
+[ext_resource type="Texture2D" uid="uid://cuqru2p5w7jh7" path="res://addons/toaster/Node.svg" id="3_rketo"]
+[ext_resource type="Texture2D" uid="uid://caknwr0gcgjf6" path="res://addons/toaster/Node2D.svg" id="4_7krdy"]
+[ext_resource type="Texture2D" uid="uid://dsjrspftx1dvv" path="res://addons/toaster/Node3D.svg" id="5_gnyrx"]
+[ext_resource type="AudioStream" uid="uid://dawf55odbe7og" path="res://addons/toaster/toaster.mp3" id="6_7krdy"]
+[ext_resource type="AudioStream" uid="uid://ckpl0ix6kpv0m" path="res://addons/toaster/bell.wav" id="7_gnyrx"]
+[ext_resource type="Script" uid="uid://dgl4qrcv1frth" path="res://addons/toaster/toaster_slider.gd" id="7_jqavf"]
+[ext_resource type="Script" uid="uid://cuy76501sw7xa" path="res://addons/toaster/toaster_progress_bar.gd" id="8_77bb5"]
+
+[node name="Toaster" type="Control"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_865fn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+modulate = Color(0.278431, 0.54902, 0.74902, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.74
+texture = ExtResource("2_6igkx")
+
+[node name="Control" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.48
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Control"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[rainbow freq=0.1][font_size=32]-=- Godot Toaster -=-"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Control" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ToasterTerminal" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Control/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.85
+bbcode_enabled = true
+text = "Godot Toaster v1.0.0.custom_build by [url=https://bsky.app/profile/dog-game.com][color=2089f2]moondog[/color][/url]
+[color=888888]--- Toaster server started on port 6006 ---
+--- Toaster language server started on port 6005 ---[/color]
+"
+scroll_following = true
+script = ExtResource("3_dj510")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Control/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control1" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control/Control1"]
+layout_mode = 2
+text = "Temperature"
+
+[node name="TemperatureSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control/Control1"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Low"
+popup/item_0/icon = ExtResource("3_rketo")
+popup/item_0/id = 0
+popup/item_1/text = "Low2D"
+popup/item_1/icon = ExtResource("4_7krdy")
+popup/item_1/id = 1
+popup/item_2/text = "Low3D"
+popup/item_2/icon = ExtResource("5_gnyrx")
+popup/item_2/id = 2
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ToasterSlider" type="VSlider" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control/Control2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+script = ExtResource("7_jqavf")
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.06
+
+[node name="Control3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OptionBurn" type="CheckBox" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control/Control3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "burn toast"
+
+[node name="OptionInstant" type="CheckBox" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control/Control3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "instant bake"
+
+[node name="OptionBoss" type="CheckBox" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control/Control3"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "boss music"
+
+[node name="OptionMoondog" type="CheckBox" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control/Control3"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = false
+text = "Moondog"
+
+[node name="OptionClearTerminal" type="CheckBox" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/Control/Control3"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = false
+text = "clear terminal"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("8_77bb5")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Pull the lever to begin Cooking."
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/Control/Control/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ReloadButton" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -61.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Reload"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_7krdy")
+volume_db = -16.0
+pitch_scale = 1.27
+
+[node name="Complete" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_gnyrx")
+volume_db = -8.0
+pitch_scale = 1.35
