@@ -1,6 +1,6 @@
 ![screen-shot](https://github.com/dog-on-moon/godot-toaster/blob/main/readme/banner.png)
 
-# Godot Toaster
+# Toaster - see more: [moonSuite](https://dog-game.xyz/tools/)
 
 Toaster is an extremely advanced cooking mechanism for Godot 4.4+ designed to fully utilize the new EditorToaster system exposed in Godot 4.4dev5.
 This plugin is created based on what I felt was lacking from Godot in regards to efficient toast development, and I hope it will serve your purposes too.
